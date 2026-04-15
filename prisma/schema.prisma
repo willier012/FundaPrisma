@@ -21,6 +21,8 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   posts     Post[]
+
+  @@map("users")
 }
 
 
@@ -29,6 +31,8 @@ model Post {
   title   String
   subtitle String?
   content String
-  userid  Int
+  userid  Int @map("user_id")
   user    User @relation(fields: [userid], references: [id])
+
+  @@map("posts")
 }
